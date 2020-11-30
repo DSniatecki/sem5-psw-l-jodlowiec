@@ -7,18 +7,27 @@
     <meta name="authors" content="Damian Śniatecki, Daniel Eryk Wojciechowski">
     <link rel="stylesheet" type="text/css" href="reviewer.css">
     <script type="text/javascript" src="reviewer-songs.js"></script>
+    <script type="text/javascript" src="reviewer-alerts.js"></script>
+
 </head>
 <body onload="loadWebsite()">
 <header>Song Reviewer</header>
 <section>
+    <h3 id="websiteSettingsSection">Website settings!</h3>
+    <div id="websiteSettingsSelectors"></div>
+</section>
+<div id="alert"></div>
+<section>
     <h3> Add new song!</h3>
-    <form id="addNewReviewForm" method="post" autocomplete="on">
+    <form id="addNewReviewForm" name="newReviewForm" onsubmit="submitReview()" method="post" autocomplete="on">
         <p>
-            <label>Song name <input name="songName" type="text" minlength="2" maxlength="40" placeholder="Song name"
+            <label>Song name <input name="songName" type="text" minlength="2" maxlength="40"
+                                    placeholder="Song name"
                                     required/></label>
         <p>
         <p>
-            <label>Artist <input name="artistName" type="text" minlength="1" maxlength="40" placeholder="Artist name"
+            <label>Artist <input name="artistName" type="text" minlength="1" maxlength="40"
+                                 placeholder="Artist name"
                                  required/></label>
         <p>
         <p>
@@ -42,13 +51,16 @@
                                      required></label></p>
         <p>
             <input type="submit" value="Create review"/>
-            <input type="reset" value="Clear"/>
+            <input type="reset" onclick="resetReview()" value="Clear"/>
         </p>
     </form>
 </section>
-<div id="reviews"></div>
+<div id="reviews">
+</div>
+<section id="cursorPosition"></section>
 <footer>
     Song Reviewer 2020 &trade;
 </footer>
+
 </body>
 </html>
